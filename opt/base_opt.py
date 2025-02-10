@@ -1,0 +1,57 @@
+import torch.nn as nn
+
+Opt = {
+    'gpu_id':1,
+    'img_size':224,
+    'in_chans': 1,
+    'depth':1,
+    'patch_size': 16,
+    'embed_dim': 96,
+    'num_heads': 4,
+    'batch_size':32,
+    'weight_decay':0.5, 
+    'betas':(0.9,0.85),
+    'criterion': nn.CrossEntropyLoss(),
+    'optimizer':'AdamW',
+    'step_size': 20,
+    'scheduler':'CosineAnnealingWarmupRestarts',
+    'max_lr':0.0005,
+    'min_lr':5e-7, 
+    'gamma':0.8,
+    'epochs':100,
+    'num_workers':4,
+    'block_out_list': [32, 64, 128],
+    'down_list': [True, True, True],
+    'block_mid_chan':64,
+    'loss_coef': [1,0.2],
+    'transforms': [],
+    'use_scheduler':True
+}
+
+smallOpt = {
+    'gpu_id':1,         
+    'img_size':224,     
+    'in_chans': 1,      
+    'depth':2,         
+    'patch_size': 16,   
+    'embed_dim': 32,    
+    'num_heads': 4,     
+    'batch_size':32,    
+    'weight_decay':0.05,  
+    'betas':(0.9,0.999),
+    'criterion': nn.CrossEntropyLoss(),
+    'optimizer':'AdamW',
+    'scheduler':'CosineAnnealingWarmupRestarts',
+    'max_lr':0.0005,                             
+    'min_lr':5e-7,                               
+    'gamma':0.8,                                 
+    'epochs':200,                                
+    'num_workers':8,                            
+    'block_out_list': [32, 32, 32, 32, 32, 32],
+    'down_list': [True, False, True, False, False, True],
+    'block_mid_chan': 16,
+    'loss_coef': [1,0.2],
+    'transforms':['RandomRotate'], 
+    'use_scheduler':True
+}
+
